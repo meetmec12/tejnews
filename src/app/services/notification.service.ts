@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-
-declare var OneSignal: any;
+import OneSignal from '@onesignal/capacitor-plugin';
 
 @Injectable({
   providedIn: 'root'
@@ -17,90 +16,46 @@ export class NotificationService {
 
   async initializeOneSignal() {
     try {
-      console.log('Starting OneSignal initialization...');
       await this.platform.ready();
-      
-      if (this.platform.is('capacitor')) {
-        console.log('Running on native platform');
-        
-        // Wait for OneSignal to be available with timeout
-        let attempts = 0;
-        const maxAttempts = 10;
-        
-        while (typeof OneSignal === 'undefined' && attempts < maxAttempts) {
-          console.log(`Waiting for OneSignal... attempt ${attempts + 1}`);
-          await new Promise(resolve => setTimeout(resolve, 500));
-          attempts++;
-        }
-        
-        if (typeof OneSignal === 'undefined') {
-          console.error('OneSignal is not available after waiting');
-          return;
-        }
-        
-        console.log('OneSignal is available, initializing...');
-        
-        // Initialize OneSignal v5 API
-        await OneSignal.initialize(this.appId);
-        console.log('OneSignal initialized with app ID:', this.appId);
-        
-        // Request permission
-        const permission = await OneSignal.Notifications.requestPermission(true);
-        console.log('Permission granted:', permission);
-        
-        // Set up notification handlers
-        OneSignal.Notifications.addEventListener('click', (event: any) => {
-          console.log('Notification clicked:', event);
-          const postId = event.notification.additionalData?.postId;
-          if (postId) {
-            this.router.navigate(['/news-detail', postId]);
-          }
-        });
-        
-        OneSignal.Notifications.addEventListener('foregroundWillDisplay', (event: any) => {
-          console.log('Notification received in foreground:', event);
-          event.preventDefault();
-          event.notification.display();
-        });
-        
-        // Check subscription status
-        const isSubscribed = await OneSignal.User.pushSubscription.getOptedIn();
-        console.log('User subscribed:', isSubscribed);
-        
-        if (isSubscribed) {
-          const subscriptionId = OneSignal.User.pushSubscription.getId();
-          console.log('Subscription ID:', subscriptionId);
-        }
-        
-        console.log('OneSignal initialization completed successfully');
-        
-      } else {
+
+      if (!this.platform.is('capacitor')) {
         console.log('OneSignal not available on web platform');
+        return;
       }
-      
+
+      OneSignal.initialize(this.appId);
+
+      await OneSignal.Notifications.requestPermission(true);
+
+      OneSignal.Notifications.addEventListener('click', (event: any) => {
+        const postId = event.notification.additionalData?.postId;
+        if (postId) {
+          this.router.navigate(['/news-detail', postId]);
+        }
+      });
+
+      OneSignal.Notifications.addEventListener('foregroundWillDisplay', (event: any) => {
+        event.preventDefault();
+        event.notification.display();
+      });
+
     } catch (error) {
       console.error('OneSignal initialization error:', error);
     }
   }
 
   async getPlayerId(): Promise<string | null> {
-    if (!this.platform.is('capacitor')) {
-      return null;
-    }
-
+    if (!this.platform.is('capacitor')) return null;
     try {
-      return OneSignal.User.pushSubscription.getId();
+      const id = await OneSignal.User.pushSubscription.getIdAsync();
+      return id ?? null;
     } catch (error) {
-      console.error('Error getting OneSignal subscription ID:', error);
       return null;
     }
   }
 
   async setExternalUserId(userId: string) {
-    if (!this.platform.is('capacitor')) {
-      return;
-    }
-
+    if (!this.platform.is('capacitor')) return;
     try {
       OneSignal.login(userId);
     } catch (error) {
@@ -109,10 +64,7 @@ export class NotificationService {
   }
 
   async sendTag(key: string, value: string) {
-    if (!this.platform.is('capacitor')) {
-      return;
-    }
-
+    if (!this.platform.is('capacitor')) return;
     try {
       OneSignal.User.addTag(key, value);
     } catch (error) {
@@ -121,15 +73,12 @@ export class NotificationService {
   }
 
   async setNotificationEnabled(enabled: boolean) {
-    if (!this.platform.is('capacitor')) {
-      return;
-    }
-
+    if (!this.platform.is('capacitor')) return;
     try {
       if (enabled) {
-        OneSignal.User.pushSubscription.optIn();
+        await OneSignal.User.pushSubscription.optIn();
       } else {
-        OneSignal.User.pushSubscription.optOut();
+        await OneSignal.User.pushSubscription.optOut();
       }
     } catch (error) {
       console.error('Error setting notification enabled:', error);
