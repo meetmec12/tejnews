@@ -1,0 +1,77 @@
+<ion-header class="tej-header">
+  <ion-toolbar class="tej-toolbar">
+    <ion-title>Favorites</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="clearAllFavorites()" *ngIf="(favorites$ | async)?.length">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Favorites List -->
+  <div class="favorites-content" *ngIf="(favorites$ | async) as favorites">
+    <div class="favorites-header" *ngIf="favorites.length > 0">
+      <h2 class="tej-text-brand">Your Favorites</h2>
+      <p class="favorites-count">{{ favorites.length }} article{{ favorites.length !== 1 ? 's' : '' }} saved</p>
+    </div>
+
+    <!-- Favorites List -->
+    <div class="favorites-list-compact" *ngIf="favorites.length > 0">
+      <ion-card class="tej-news-card-compact" *ngFor="let item of favorites" (click)="openFavoriteDetail(item)">
+        <div class="news-item">
+          <img [src]="getImageUrl(item)" [alt]="item.title" class="tej-news-thumb">
+          <div class="news-content">
+            <h3>{{ item.title }}</h3>
+            <div class="news-meta">
+              <span class="tej-badge-small">
+                <ion-icon name="heart"></ion-icon>
+                Favorite
+              </span>
+            </div>
+          </div>
+          <ion-button 
+            fill="clear" 
+            color="danger" 
+            (click)="removeFavorite(item); $event.stopPropagation()" 
+            class="favorite-btn">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card>
+    </div>
+
+    <!-- Empty Favorites State -->
+    <div class="empty-favorites" *ngIf="favorites.length === 0">
+      <div class="empty-content">
+        <ion-icon name="heart-outline" class="empty-icon"></ion-icon>
+        <h2>No Favorites Yet</h2>
+        <p>Start adding articles to your favorites by tapping the heart icon on any news article.</p>
+        <div class="empty-features">
+          <div class="feature-item">
+            <ion-icon name="bookmark" class="feature-icon"></ion-icon>
+            <div>
+              <h4>Save Articles</h4>
+              <p>Keep important news for later reading</p>
+            </div>
+          </div>
+         <!--  <div class="feature-item">
+            <ion-icon name="sync" class="feature-icon"></ion-icon>
+            <div>
+              <h4>Sync Across Devices</h4>
+              <p>Access your favorites anywhere</p>
+            </div>
+          </div> -->
+          <div class="feature-item">
+            <ion-icon name="time" class="feature-icon"></ion-icon>
+            <div>
+              <h4>Read Offline</h4>
+              <p>Saved articles list available offline</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,98 @@
+<ion-header class="tej-header">
+  <ion-toolbar class="tej-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>News Detail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addToFavorites()" fill="clear">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="shareNews()" fill="clear">
+        <ion-icon name="share-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container-detail">
+    <div *ngIf="loading" class="tej-spinner">
+      <ion-spinner name="crescent" color="primary" style="--color: #FF0000 !important; color: #FF0000 !important;"></ion-spinner>
+    </div>
+
+    <div *ngIf="!loading && post" class="news-detail">
+      <div class="news-image" *ngIf="getImageUrl()">
+        <img [src]="getImageUrl()" [alt]="post.title.rendered">
+      </div>
+
+      <div class="news-content">
+        <div class="news-meta">
+          <span class="date">
+            <ion-icon name="time-outline"></ion-icon>
+            {{ getTimeAgo(post.date) }}
+          </span>
+          <span class="author" *ngIf="post._embedded?.author?.[0]?.name">
+            • {{ post._embedded?.author?.[0]?.name }}
+          </span>
+        </div>
+
+        <h1 class="news-title">{{ post.title.rendered }}</h1>
+
+        <div class="news-categories" *ngIf="post._embedded?.['wp:term']?.[0]">
+          <span 
+            class="tej-category-badge" 
+            *ngFor="let category of post._embedded?.['wp:term']?.[0]">
+            {{ category.name }}
+          </span>
+        </div>
+
+        <div class="news-body" [innerHTML]="post.content.rendered"></div>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="comments-section">
+        <div class="comments-header">
+          <h3>Comments ({{ comments.length }})</h3>
+          <ion-button 
+            color="danger" 
+            fill="outline"
+            (click)="openCommentModal()"
+            class="add-comment-btn">
+            <ion-icon name="add" slot="start"></ion-icon>
+            Add Comment
+          </ion-button>
+        </div>
+
+        <!-- Comments List -->
+        <div class="comments-list">
+          <div *ngIf="commentsLoading" class="comments-loading">
+            <ion-spinner name="crescent"></ion-spinner>
+          </div>
+          
+          <div *ngFor="let comment of comments" class="comment-item">
+            <div class="comment-header">
+              <strong>{{ comment.author_name }}</strong>
+              <span class="comment-date">{{ getTimeAgo(comment.date) }}</span>
+            </div>
+            <div class="comment-content" [innerHTML]="comment.content.rendered"></div>
+          </div>
+          
+          <div *ngIf="!commentsLoading && comments.length === 0" class="no-comments">
+            <p>No comments yet. Be the first to comment!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !post" class="empty-state">
+    <ion-icon name="alert-circle-outline" class="empty-icon"></ion-icon>
+    <h3>News Not Found</h3>
+    <p>The requested news article could not be loaded.</p>
+    <ion-button class="tej-button" routerLink="/tabs/home">
+      <ion-icon name="home" slot="start"></ion-icon>
+      Go Home
+    </ion-button>
+  </div>
+</ion-content>

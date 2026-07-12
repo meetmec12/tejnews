@@ -1,0 +1,46 @@
+<ion-header class="tej-header">
+  <ion-toolbar class="tej-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/podcasts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Podcast</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="loading" class="loading-container">
+    <ion-spinner></ion-spinner>
+    <p>Loading podcast...</p>
+  </div>
+
+  <div *ngIf="!loading && podcast" class="podcast-detail">
+    <div class="player-container" *ngIf="youtubeEmbedUrl">
+      <iframe 
+        [src]="youtubeEmbedUrl" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="podcast-info-card">
+      <h1 [innerHTML]="podcast.title.rendered"></h1>
+      <p class="date">
+        <ion-icon name="calendar-outline"></ion-icon>
+        {{ podcast.date | date:'MMMM d, y' }}
+      </p>
+    </div>
+
+    <div class="no-video-message" *ngIf="!youtubeEmbedUrl">
+      <ion-icon name="videocam-off-outline" size="large"></ion-icon>
+      <p>No YouTube video found in this episode.</p>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !podcast" class="error-state">
+    <ion-icon name="alert-circle-outline" size="large"></ion-icon>
+    <h2>Podcast Not Found</h2>
+    <p>This podcast episode could not be loaded.</p>
+    <ion-button routerLink="/tabs/podcasts">Back to Podcasts</ion-button>
+  </div>
+</ion-content>

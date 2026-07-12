@@ -1,0 +1,1161 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Bootstrap CSS */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+/* TEJ SPA Branding Styles */
+:root {
+  --brand: #FF0000;
+  --bs-primary: #FF0000;
+  --bs-primary-rgb: 255, 0, 0;
+  --app-font-size: 16px;
+}
+
+body {
+  --ion-background-color: #ffffff;
+  --ion-text-color: #000000;
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-size: var(--app-font-size);
+}
+
+body.dark {
+  --ion-background-color: #121212;
+  --ion-text-color: #f1f1f1;
+  background: #121212 !important;
+  color: #f1f1f1 !important;
+  font-size: var(--app-font-size);
+}
+
+/* Apply font size to common text elements but exclude tabs */
+p, span, div, ion-label, ion-text {
+  font-size: var(--app-font-size);
+}
+
+/* Exclude tabs from font size changes */
+ion-tab-bar, ion-tab-button, ion-tab-button ion-label {
+  font-size: 14px !important;
+}
+
+h1 { font-size: calc(var(--app-font-size) * 2); }
+h2 { font-size: calc(var(--app-font-size) * 1.5); }
+h3 { font-size: calc(var(--app-font-size) * 1.25); }
+h4 { font-size: calc(var(--app-font-size) * 1.1); }
+h5 { font-size: var(--app-font-size); }
+h6 { font-size: calc(var(--app-font-size) * 0.9); }
+
+body.dark .card {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333333 !important;
+}
+
+body.dark .list-group-item {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333333 !important;
+}
+
+body.dark .list-group-item:hover {
+  background: #2a2a2a !important;
+}
+
+.bg-brand {
+  background: var(--brand) !important;
+}
+
+.text-brand {
+  color: var(--brand) !important;
+}
+
+.btn-brand {
+  background-color: var(--brand);
+  color: white;
+  border: none;
+}
+
+.btn-brand:hover {
+  background-color: #cc0000;
+  color: white;
+}
+
+.spinner-border-brand {
+  color: var(--brand) !important;
+  border-color: var(--brand) !important;
+}
+
+.nav-badge-btn {
+  border: none;
+  background: #f8f9fa;
+  color: #000;
+  padding: 3px 8px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-badge-btn.active {
+  background: var(--brand);
+  color: #fff;
+}
+
+body.dark .nav-badge-btn {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+body.dark .nav-badge-btn.active {
+  background: var(--brand);
+  color: #fff;
+}
+
+.tej-card {
+  background: var(--tej-card-background);
+  border: var(--tej-card-border);
+  border-radius: var(--tej-card-radius);
+  box-shadow: var(--tej-card-shadow);
+  margin: 8px 0;
+  overflow: hidden;
+}
+
+.tej-button {
+  --background: var(--tej-brand);
+  --color: white;
+  --border-radius: var(--tej-button-radius);
+  --box-shadow: var(--tej-button-shadow);
+  height: var(--tej-button-height);
+  font-weight: 500;
+}
+
+.tej-button:hover {
+  --background: var(--tej-brand-dark);
+}
+
+.tej-text-brand {
+  color: var(--tej-brand) !important;
+}
+
+.tej-bg-brand {
+  background: var(--tej-brand) !important;
+}
+
+.tej-header {
+  --background: var(--brand) !important;
+  --color: white !important;
+  background: var(--brand) !important;
+}
+
+.tej-toolbar {
+  --background: var(--brand) !important;
+  --color: white !important;
+  background: var(--brand) !important;
+}
+
+.tej-header ion-title {
+  --color: white !important;
+  color: white !important;
+}
+
+.tej-header ion-button {
+  --color: white !important;
+  color: white !important;
+}
+
+.tej-header ion-icon {
+  color: white !important;
+}
+
+.tej-header ion-menu-button {
+  --color: white !important;
+  color: white !important;
+}
+
+.tej-header ion-back-button {
+  --color: white !important;
+  color: white !important;
+}
+
+.tej-news-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 8px 0;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  max-width: none;
+}
+
+body.dark .tej-news-card {
+  background: #1e1e1e;
+  color: #ffffff;
+  border-color: #333333;
+}
+
+.tej-news-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+body.dark .tej-news-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px;
+  gap: 12px;
+}
+
+.news-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.news-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #333333 !important;
+}
+
+body.dark .news-content h3 {
+  color: #ffffff !important;
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+body.dark .news-meta {
+  color: #b0b0b0;
+}
+
+.news-meta .time {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #6c757d;
+}
+
+body.dark .news-meta .time {
+  color: #b0b0b0;
+}
+
+.news-meta .time ion-icon {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+body.dark .news-meta .time ion-icon {
+  color: #b0b0b0;
+}
+
+.tej-category-badge {
+  background: var(--brand);
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  margin: 2px;
+  font-size: 0.75rem;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.tej-news-thumb {
+  width: 90px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.tej-news-card-compact {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 4px 0;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  max-width: none;
+}
+
+body.dark .tej-news-card-compact {
+  background: #1e1e1e;
+  color: #ffffff;
+  border-color: #333333;
+}
+
+.tej-news-card-compact:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+body.dark .tej-news-card-compact:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.news-list-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.favorites-list-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tej-badge-small {
+  background: #f8f9fa;
+  color: var(--brand);
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+body.dark .tej-badge-small {
+  background: #2a2a2a;
+  color: var(--brand);
+}
+
+.tej-news-card-compact .news-item {
+  padding: 8px 12px;
+}
+
+.tej-news-card-compact .news-content h3 {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.tej-news-card-compact .news-meta {
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+
+.tej-news-card-compact .favorite-btn {
+  --color: var(--tej-text-secondary);
+  margin: 0;
+  min-width: 36px;
+  height: 36px;
+}
+
+.tej-news-thumb {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.tej-news-card:hover .tej-news-thumb {
+  transform: scale(1.05);
+}
+
+.tej-slider-img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.tej-category-chip {
+  background: #f8f9fa;
+  color: #000000;
+  border-radius: 15px;
+  padding: 3px 8px;
+  margin: 3px;
+  font-size: 0.85rem;
+  border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+body.dark .tej-category-chip {
+  background: #2a2a2a;
+  color: #ffffff;
+}
+
+.tej-category-chip:hover {
+  background: var(--brand);
+  color: white;
+}
+
+.tej-category-chip.active {
+  background: var(--brand);
+  color: white;
+}
+
+body.dark .tej-category-chip.active {
+  background: var(--brand);
+  color: white;
+}
+
+ion-badge {
+  --background: var(--brand);
+  --color: white;
+  margin-left: 4px;
+  font-size: 0.7rem;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+}
+
+.tej-live-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--tej-brand);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.tej-skeleton {
+  background: linear-gradient(90deg, var(--tej-surface) 25%, var(--tej-border) 50%, var(--tej-surface) 75%);
+  background-size: 200% 100%;
+  animation: tejSkeleton 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes tejSkeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.tej-video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  margin-bottom: 20px;
+  border-radius: var(--tej-card-radius);
+  overflow: hidden;
+}
+
+.tej-video-container iframe,
+.tej-video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tej-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  
+  ion-spinner {
+    --color: var(--brand) !important;
+    width: 32px;
+    height: 32px;
+    color: var(--brand) !important;
+  }
+}
+
+ion-spinner {
+  --color: var(--brand) !important;
+  color: var(--brand) !important;
+}
+
+.spinner-border {
+  color: var(--brand) !important;
+  border-color: var(--brand) !important;
+}
+
+.tej-loading-text {
+  text-align: center;
+  color: var(--tej-text-secondary);
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+.tej-pulse {
+  animation: tejPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes tejPulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tej-fade-in {
+  animation: tejFadeIn 0.5s ease-out;
+}
+
+@keyframes tejFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tej-fab {
+  --background: var(--tej-brand);
+  --color: white;
+  --box-shadow: var(--tej-button-shadow);
+}
+
+.tej-segment {
+  --background: var(--tej-surface);
+}
+
+.tej-segment-button {
+  --color: var(--tej-text-secondary);
+  --color-checked: var(--tej-brand);
+  --border-color: var(--tej-border);
+  --indicator-color: var(--tej-brand);
+}
+
+.tej-modal {
+  --background: var(--tej-background);
+  --color: var(--tej-text-primary);
+}
+
+.tej-modal-header {
+  --background: var(--tej-brand);
+  --color: white;
+}
+
+.tej-searchbar {
+  --background: var(--tej-surface);
+  --color: var(--tej-text-primary);
+  --placeholder-color: var(--tej-text-secondary);
+  --icon-color: var(--tej-text-secondary);
+  --border-radius: var(--tej-button-radius);
+}
+
+.tej-list {
+  background: transparent;
+}
+
+.tej-item {
+  --background: var(--tej-card-background);
+  --color: var(--tej-text-primary);
+  --border-color: var(--tej-border);
+  margin: 4px 0;
+  border-radius: var(--tej-card-radius);
+}
+
+.tej-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.tej-badge {
+  background: var(--tej-brand);
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+}
+
+.tej-divider {
+  border-color: var(--tej-border);
+}
+
+.tej-loading {
+  --spinner-color: var(--tej-brand);
+}
+
+.tej-toast {
+  --background: var(--tej-card-background);
+  --color: var(--tej-text-primary);
+  --border: var(--tej-card-border);
+}
+
+.tej-alert {
+  --background: var(--tej-card-background);
+  --color: var(--tej-text-primary);
+}
+
+.tej-popover {
+  --background: var(--tej-card-background);
+  --color: var(--tej-text-primary);
+}
+
+.tej-alert {
+  --background: #ffffff;
+  --color: #000000;
+  --border-color: #dee2e6;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .tej-alert {
+  --background: #1e1e1e;
+  --color: #f1f1f1;
+  --border-color: #333333;
+  background: #1e1e1e;
+  color: #f1f1f1;
+  border-color: #333333;
+}
+
+ion-alert {
+  --background: #ffffff;
+  --color: #000000;
+  --border-color: #dee2e6;
+}
+
+body.dark ion-alert {
+  --background: #1e1e1e;
+  --color: #f1f1f1;
+  --border-color: #333333;
+}
+
+ion-alert .alert-wrapper {
+  background: #ffffff;
+  color: #000000;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+body.dark ion-alert .alert-wrapper {
+  background: #1e1e1e;
+  color: #f1f1f1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+ion-alert .alert-head {
+  background: transparent;
+  color: inherit;
+  padding: 20px 20px 0 20px;
+}
+
+ion-alert .alert-title {
+  color: inherit;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+ion-alert .alert-message {
+  color: #6c757d;
+  padding: 10px 20px 20px 20px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+body.dark ion-alert .alert-message {
+  color: #b0b0b0;
+}
+
+ion-alert .alert-button-group {
+  border-top: 1px solid #dee2e6;
+}
+
+body.dark ion-alert .alert-button-group {
+  border-top-color: #333333;
+}
+
+ion-alert .alert-button {
+  background: transparent;
+  color: var(--brand);
+  font-weight: 500;
+  border: none;
+  padding: 16px;
+  font-size: 1rem;
+}
+
+ion-alert .alert-button:hover {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+ion-alert .alert-button.alert-button-role-destructive {
+  color: #dc3545;
+}
+
+ion-alert .alert-button.alert-button-role-cancel {
+  color: #6c757d;
+}
+
+body.dark ion-alert .alert-button.alert-button-role-cancel {
+  color: #b0b0b0;
+}
+
+/* SPA-Style Menu Drawer */
+ion-menu {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  background: #ffffff !important;
+}
+
+ion-menu::part(backdrop) {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+ion-menu::part(container) {
+  background: #ffffff !important;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+ion-menu ion-header {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  border-bottom: 1px solid #dee2e6;
+}
+
+ion-menu ion-toolbar {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  --border-color: #dee2e6;
+}
+
+ion-menu ion-title {
+  --color: #000000 !important;
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+ion-menu ion-content {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  background: #ffffff !important;
+}
+
+ion-menu ion-list {
+  background: #ffffff !important;
+}
+
+ion-menu ion-item {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  --border-color: transparent;
+  --inner-border-width: 0;
+  --padding-start: 20px;
+  --min-height: 48px;
+  font-weight: 400;
+  transition: background-color 0.2s ease;
+  background: #ffffff !important;
+}
+
+ion-menu ion-item:hover {
+  --background: #f8f9fa !important;
+  background: #f8f9fa !important;
+}
+
+ion-menu ion-item.selected {
+  --background: rgba(255, 0, 0, 0.1) !important;
+  --color: var(--brand) !important;
+  font-weight: 500;
+  background: rgba(255, 0, 0, 0.1) !important;
+}
+
+ion-menu ion-item ion-icon {
+  color: var(--brand) !important;
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+ion-menu ion-item.selected ion-icon {
+  color: var(--brand) !important;
+}
+
+ion-menu ion-label {
+  color: #000000 !important;
+  font-size: 0.95rem;
+}
+
+.menu-header {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #dee2e6;
+  background: #ffffff !important;
+}
+
+.menu-logo {
+  max-height: 60px;
+  margin-bottom: 12px;
+}
+
+.menu-title {
+  color: var(--brand) !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.menu-subtitle {
+  color: #6c757d !important;
+  font-size: 0.85rem;
+  margin: 4px 0 0 0;
+}
+
+/* Force light theme for menu regardless of app theme */
+body.dark ion-menu {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  background: #ffffff !important;
+}
+
+body.dark ion-menu::part(container) {
+  background: #ffffff !important;
+}
+
+body.dark ion-menu ion-header {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+}
+
+body.dark ion-menu ion-toolbar {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+}
+
+body.dark ion-menu ion-title {
+  --color: #000000 !important;
+  color: #000000 !important;
+}
+
+body.dark ion-menu ion-content {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  background: #ffffff !important;
+}
+
+body.dark ion-menu ion-list {
+  background: #ffffff !important;
+}
+
+body.dark ion-menu ion-item {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  background: #ffffff !important;
+}
+
+body.dark ion-menu ion-item:hover {
+  --background: #f8f9fa !important;
+  background: #f8f9fa !important;
+}
+
+body.dark ion-menu ion-item.selected {
+  --background: rgba(255, 0, 0, 0.1) !important;
+  --color: var(--brand) !important;
+  background: rgba(255, 0, 0, 0.1) !important;
+}
+
+body.dark ion-menu ion-item ion-icon {
+  color: var(--brand) !important;
+}
+
+body.dark ion-menu ion-item.selected ion-icon {
+  color: var(--brand) !important;
+}
+
+body.dark ion-menu ion-label {
+  color: #000000 !important;
+}
+
+body.dark .menu-header {
+  background: #ffffff !important;
+}
+
+body.dark .menu-title {
+  color: var(--brand) !important;
+}
+
+body.dark .menu-subtitle {
+  color: #6c757d !important;
+}
+
+.tej-tab-bar {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  --color-selected: var(--brand) !important;
+  border-top: 1px solid #dee2e6 !important;
+  background: #ffffff !important;
+}
+
+body.dark .tej-tab-bar {
+  --background: #1e1e1e !important;
+  --color: #ffffff !important;
+  background: #1e1e1e !important;
+  border-color: #333333 !important;
+}
+
+ion-tab-button {
+  --color: #000000 !important;
+  --color-selected: var(--brand) !important;
+  --ripple-color: var(--brand) !important;
+}
+
+body.dark ion-tab-button {
+  --color: #ffffff !important;
+}
+
+ion-tab-button.tab-selected {
+  --color: var(--brand) !important;
+}
+
+ion-tab-button ion-icon {
+  transition: transform 0.2s ease;
+}
+
+ion-tab-button.tab-selected ion-icon {
+  transform: scale(1.1);
+}
+
+.categories-content {
+  padding: 16px;
+}
+
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px 0;
+}
+
+.category-posts {
+  margin-top: 16px;
+}
+
+.section-header {
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+ion-badge {
+  --background: var(--tej-brand);
+  --color: white;
+  margin-left: 8px;
+  font-size: 0.7rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tej-news-thumb {
+    width: 70px;
+    height: 50px;
+  }
+  
+  .news-item {
+    padding: 10px;
+  }
+  
+  .category-chips {
+    gap: 6px;
+  }
+  
+  .tej-category-chip {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+  
+  .featured-container {
+    margin: 12px 0;
+    height: 180px;
+  }
+  
+  .section-header h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-content {
+    padding: 12px;
+  }
+  
+  .news-section {
+    padding: 0 12px;
+  }
+  
+  .tej-news-thumb {
+    width: 60px;
+    height: 45px;
+  }
+  
+  .featured-container {
+    height: 160px;
+  }
+}
+
+/* Dark theme adjustments */
+body.dark {
+  .tej-news-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .tej-skeleton {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+  }
+}
+
+/* Social Share Modal Styles */
+.share-modal {
+  --background: transparent !important;
+  --backdrop-opacity: 0 !important;
+}
+
+.share-modal ion-backdrop {
+  display: none !important;
+}
+
+/* Fix ion-select popover colors globally */
+ion-select-popover {
+  --background: #ffffff !important;
+  --color: #333333 !important;
+}
+
+body.dark ion-select-popover {
+  --background: #2d2d2d !important;
+  --color: #e0e0e0 !important;
+}
+
+ion-select-popover ion-list {
+  background: #ffffff !important;
+  color: #333333 !important;
+}
+
+body.dark ion-select-popover ion-list {
+  background: #2d2d2d !important;
+  color: #e0e0e0 !important;
+}
+
+ion-select-popover ion-item {
+  --background: #ffffff !important;
+  --color: #333333 !important;
+  background: #ffffff !important;
+  color: #333333 !important;
+}
+
+body.dark ion-select-popover ion-item {
+  --background: #2d2d2d !important;
+  --color: #e0e0e0 !important;
+  background: #2d2d2d !important;
+  color: #e0e0e0 !important;
+}
+
+ion-select-popover ion-radio {
+  --color: #333333 !important;
+  --color-checked: var(--brand) !important;
+  color: #333333 !important;
+}
+
+body.dark ion-select-popover ion-radio {
+  --color: #e0e0e0 !important;
+  --color-checked: var(--brand) !important;
+  color: #e0e0e0 !important;
+}
+
+.select-popover ion-item {
+  --background: #ffffff !important;
+  --color: #333333 !important;
+  background: #ffffff !important;
+  color: #333333 !important;
+}
+
+body.dark .select-popover ion-item {
+  --background: #2d2d2d !important;
+  --color: #e0e0e0 !important;
+  background: #2d2d2d !important;
+  color: #e0e0e0 !important;
+}

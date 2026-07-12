@@ -1,0 +1,91 @@
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.close-menu-btn {
+  --color: #666;
+  margin: 0;
+  
+  ion-icon {
+    font-size: 24px;
+  }
+}
+
+.menu-logo {
+  height: 32px;
+  width: auto;
+}
+
+.menu-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: var(--tej-surface);
+  border-top: 1px solid var(--tej-border);
+  margin-top: 40px;
+}
+
+.app-info {
+  text-align: center;
+}
+
+.app-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--tej-text-primary);
+}
+
+.app-info p {
+  margin: 0 0 2px 0;
+  font-size: 0.8rem;
+  color: var(--tej-text-secondary);
+}
+
+.copyright {
+  font-size: 0.75rem !important;
+  opacity: 0.7;
+}
+
+/* Menu item styling */
+ion-menu ion-item {
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  margin: 2px 8px;
+  border-radius: 8px;
+}
+
+ion-menu ion-item ion-icon {
+  color: var(--tej-brand);
+  margin-right: 12px;
+}
+
+ion-menu ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-menu ion-item:hover {
+  --background: var(--tej-surface);
+}
+
+ion-menu ion-item.item-has-focus {
+  --background: var(--tej-surface);
+}
+
+/* Menu content spacing */
+ion-menu ion-content {
+  --padding-bottom: 120px;
+}
+
+/* Dark theme adjustments */
+body.dark {
+  .menu-footer {
+    background: var(--tej-surface);
+    border-top-color: var(--tej-border);
+  }
+}

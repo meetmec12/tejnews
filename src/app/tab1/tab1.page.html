@@ -1,0 +1,95 @@
+<ion-header class="tej-header">
+  <ion-toolbar class="tej-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="header-content">
+        <img src="assets/img/tejmainlight.png" alt="TEJ News" class="header-logo">
+        <span>TEJ News</span>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleDarkMode()">
+        <ion-icon name="moon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Featured News Slider -->
+  <div class="featured-container" *ngIf="sliderPosts.length > 0">
+    <div class="featured-slider">
+      <div class="featured-post" 
+           *ngFor="let post of sliderPosts.slice(currentSlide, currentSlide + 1)" 
+           (click)="openNewsDetail(post)">
+        <div class="featured-content">
+          <img [src]="getImageUrl(post)" [alt]="post.title.rendered" class="tej-slider-img">
+          <div class="featured-overlay">
+            <ion-chip class="featured-badge">Featured</ion-chip>
+            <h3>{{ post.title.rendered }}</h3>
+            <p>{{ getTimeAgo(post.date) }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="slider-dots" *ngIf="sliderPosts.length > 1">
+        <span *ngFor="let post of sliderPosts; let i = index" 
+              class="dot" 
+              [class.active]="i === currentSlide"
+              (click)="goToSlide(i)"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="tej-spinner" *ngIf="loading">
+    <ion-spinner name="crescent" color="primary" style="--color: #FF0000 !important; color: #FF0000 !important;"></ion-spinner>
+  </div>
+
+  <!-- Latest News Section -->
+  <div class="news-section" *ngIf="!loading">
+    <div class="section-header">
+      <h2 class="tej-text-brand">Latest News</h2>
+    </div>
+
+    <!-- News List -->
+    <div class="news-list-compact">
+      <ion-card class="tej-news-card-compact tej-fade-in" *ngFor="let post of posts; let i = index" (click)="openNewsDetail(post)" [style.animation-delay]="(i * 0.1) + 's'">
+        <div class="news-item">
+          <img [src]="getImageUrl(post)" [alt]="post.title.rendered" class="tej-news-thumb">
+          <div class="news-content">
+            <h3>{{ post.title.rendered }}</h3>
+            <div class="news-meta">
+              <span class="time">
+                <ion-icon name="time-outline"></ion-icon>
+                {{ getTimeAgo(post.date) }}
+              </span>
+              <span class="author" *ngIf="post._embedded?.author?.[0]?.name">
+                • {{ post._embedded?.author?.[0]?.name }}
+              </span>
+            </div>
+          </div>
+          <ion-button fill="clear" (click)="addToFavorites(post); $event.stopPropagation()" class="favorite-btn">
+            <ion-icon [name]="favoritesService.isFavorite(post.id) ? 'heart' : 'heart-outline'" [color]="favoritesService.isFavorite(post.id) ? 'danger' : 'medium'"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="!loading && posts.length === 0">
+    <ion-icon name="newspaper-outline" class="empty-icon"></ion-icon>
+    <h3>No News Available</h3>
+    <p>Please check your internet connection and try again.</p>
+    <ion-button class="tej-button" (click)="loadPosts()">
+      <ion-icon name="refresh" slot="start"></ion-icon>
+      Retry
+    </ion-button>
+  </div>
+</ion-content>

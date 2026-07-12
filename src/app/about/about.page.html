@@ -1,0 +1,157 @@
+<ion-header class="tej-header">
+  <ion-toolbar class="tej-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>About Us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container-detail">
+
+    <h3 class="page-title">About Us</h3>
+
+    <!-- Intro -->
+    <div class="card intro-card">
+      <div class="card-body">
+        <h4 class="text-brand">The Elite Journal</h4>
+        <p>
+          At The Elite Journal (TEJ), we are passionate about delivering
+          high-quality content and strategic communication services that inform,
+          engage, and connect our audience.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="text-brand">Our Mission</h5>
+            <p>
+              To inform, engage, and connect by providing accurate news,
+              fostering meaningful conversations, and bridging communities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="text-brand">Our Vision</h5>
+            <p>
+              A future where information is accessible, reliable, and impactful,
+              empowering diverse voices and meaningful dialogue.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="text-brand mb-3">Our Values</h5>
+
+        <div class="row g-3">
+          <div class="col-12 col-md-6" *ngFor="let value of [1,2,3,4]">
+            <div class="value-item">
+              <div class="value-icon">
+                <ion-icon
+                  [name]="value === 1 ? 'shield-checkmark' :
+                          value === 2 ? 'eye' :
+                          value === 3 ? 'people' : 'star'">
+                </ion-icon>
+              </div>
+              <div>
+                <h6>
+                  {{ value === 1 ? 'Integrity' :
+                     value === 2 ? 'Objectivity' :
+                     value === 3 ? 'Community' : 'Excellence' }}
+                </h6>
+                <p>
+                  {{
+                    value === 1 ? 'Upholding the highest standards of ethics.' :
+                    value === 2 ? 'Balanced, unbiased reporting.' :
+                    value === 3 ? 'Fostering strong community connections.' :
+                    'Delivering quality in everything we do.'
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Founder -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="text-brand mb-3">The Founder</h5>
+
+        <div class="row g-3 align-items-center">
+          <div class="col-12 col-md-4">
+            <img
+              src="assets/img/TEJ_-About-Keem-Abdul-2.png"
+              alt="Keem Abdul"
+              class="founder-img"
+            />
+          </div>
+
+          <div class="col-12 col-md-8">
+            <h4>Keem Abdul</h4>
+            <p>
+              Keem Abdul is a respected Nigerian professional renowned for his
+              excellence in writing, image making, and public relations.
+            </p>
+            <p>
+              As founder of The Elite Journal, he has worked with influential
+              leaders including Femi Otedola, Rtd Col Sani Bello, President Bola
+              Tinubu, and Mohammed Babangida.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <h5 class="text-brand mb-3">What We Offer</h5>
+
+    <div class="row g-3">
+      <div class="col-12 col-md-4">
+        <div class="card service-card">
+          <img src="assets/img/TEJ_news-and-media.png" class="service-img" />
+          <div class="card-body">
+            <h6>News & Media</h6>
+            <p>Up-to-date news, analysis, and feature stories.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="card service-card">
+          <img src="assets/img/TEJ_Public-Relation.png" class="service-img" />
+          <div class="card-body">
+            <h6>Public Relations</h6>
+            <p>Strategic communication for individuals and organizations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="card service-card">
+          <img src="assets/img/TEJ_Content-Creation.png" class="service-img" />
+          <div class="card-body">
+            <h6>Content Creation</h6>
+            <p>High-quality content solutions for diverse audiences.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

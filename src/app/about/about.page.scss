@@ -1,0 +1,112 @@
+.container-detail {
+  padding: 14px 14px 24px;
+
+  .page-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  h4, h5, h6 {
+    font-weight: 600;
+    color: #333;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #6c757d;
+  }
+
+  /* Cards */
+  .card {
+    border-radius: 18px;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  /* Values */
+  .value-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .value-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--ion-color-danger);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    ion-icon {
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+
+  /* Images */
+  img {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+}
+
+/* Founder Image */
+.founder-img {
+  height: 240px;
+  object-fit: contain;
+}
+
+/* Services */
+.service-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-img {
+  height: 160px;
+  object-fit: contain;
+  margin: 14px;
+  border-radius: 20px;
+}
+
+/* Dark Mode */
+body.dark {
+  .container-detail {
+    h4, h5, h6 {
+      color: #ffffff;
+    }
+
+    p {
+      color: #cfcfcf;
+    }
+
+    .card {
+      background: #1e1e1e;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+    }
+  }
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+  .founder-img {
+    height: 220px;
+    margin-bottom: 12px;
+  }
+
+  .service-img {
+    height: 150px;
+  }
+}

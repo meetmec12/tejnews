@@ -1,0 +1,115 @@
+<ion-header class="tej-header">
+  <ion-toolbar class="tej-toolbar">
+    <ion-title>Live TV</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Loading Spinner -->
+  <div class="tej-spinner" *ngIf="loading">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <p>Loading Live TV...</p>
+  </div>
+
+  <!-- Live TV Content -->
+  <div class="live-tv-content" *ngIf="!loading && !error && liveTV">
+    <!-- Video Player -->
+    <div class="video-section">
+      <div class="tej-video-container" *ngIf="videoUrl">
+        <div class="tej-live-badge">LIVE</div>
+        <iframe 
+          [src]="videoUrl" 
+          frameborder="0" 
+          allowfullscreen
+          allow="autoplay; encrypted-media; picture-in-picture">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Live TV Info -->
+    <div class="live-info">
+      <ion-card class="tej-card">
+        <ion-card-header>
+          <ion-card-title class="tej-text-brand">
+            {{ liveTV.title.rendered }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p [innerHTML]="getCleanContent(liveTV.excerpt.rendered)"></p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Live Features -->
+    <div class="live-features">
+      <ion-card class="tej-card">
+        <ion-card-header>
+          <ion-card-title class="tej-text-brand">Live Features</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="features-grid">
+            <div class="feature-item">
+              <ion-icon name="radio" class="feature-icon"></ion-icon>
+              <div>
+                <h4>Live Streaming</h4>
+                <p>Watch TEJ News live 24/7</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <ion-icon name="globe" class="feature-icon"></ion-icon>
+              <div>
+                <h4>Global Coverage</h4>
+                <p>News from around the world</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <ion-icon name="newspaper" class="feature-icon"></ion-icon>
+              <div>
+                <h4>Breaking News</h4>
+                <p>Real-time news updates</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <ion-icon name="people" class="feature-icon"></ion-icon>
+              <div>
+                <h4>Expert Analysis</h4>
+                <p>Professional commentary</p>
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-state" *ngIf="!loading && error">
+    <div class="error-content">
+      <ion-icon name="tv" class="error-icon"></ion-icon>
+      <h2>Live TV Unavailable</h2>
+      <p>The Live TV stream is currently unavailable. This could be due to:</p>
+      <ul class="error-reasons">
+        <li>Network connectivity issues</li>
+        <li>Server maintenance</li>
+        <li>Stream temporarily offline</li>
+      </ul>
+      <ion-button class="tej-button" (click)="retry()">
+        <ion-icon name="refresh" slot="start"></ion-icon>
+        Try Again
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Placeholder when no video URL -->
+  <div class="placeholder-state" *ngIf="!loading && !error && liveTV && !videoUrl">
+    <div class="placeholder-content">
+      <ion-icon name="videocam-off" class="placeholder-icon"></ion-icon>
+      <h3>Stream Configuration</h3>
+      <p>Live TV stream is being configured. Please check back later.</p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,66 @@
+.container-detail {
+  padding: 16px;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #333333 !important;
+  }
+  
+  p {
+    color: #6c757d !important;
+  }
+  
+  .card {
+    background: #ffffff;
+  }
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+}
+
+body.dark .container-detail {
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+  }
+  
+  p {
+    color: #b0b0b0 !important;
+  }
+  
+  .card {
+    background: #1e1e1e !important;
+    color: #ffffff;
+  }
+  
+  .text-muted {
+    color: #b0b0b0 !important;
+  }
+}
+
+.contact-icon ion-icon {
+  font-size: 3rem;
+  color: var(--brand);
+}
+
+.form-control {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px;
+  color: #333333;
+}
+
+body.dark .form-control {
+  background: #2a2a2a;
+  border-color: #333333;
+  color: #f1f1f1;
+}
+
+.form-label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+body.dark .form-label {
+  color: #ffffff;
+}

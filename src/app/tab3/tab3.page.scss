@@ -1,0 +1,162 @@
+.live-tv-content {
+  padding: 16px;
+}
+
+.video-section {
+  margin-bottom: 20px;
+}
+
+.live-info {
+  margin-bottom: 20px;
+}
+
+.live-features {
+  margin-bottom: 20px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  color: var(--tej-brand);
+  margin-top: 4px;
+  min-width: 24px;
+}
+
+.feature-item h4 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--tej-text-primary);
+}
+
+.feature-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--tej-text-secondary);
+  line-height: 1.4;
+}
+
+.error-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 20px;
+}
+
+.error-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.error-icon {
+  font-size: 4rem;
+  color: var(--tej-text-secondary);
+  margin-bottom: 20px;
+}
+
+.error-content h2 {
+  margin: 0 0 16px 0;
+  color: var(--tej-text-primary);
+  font-size: 1.4rem;
+}
+
+.error-content p {
+  margin: 0 0 16px 0;
+  color: var(--tej-text-secondary);
+  line-height: 1.5;
+}
+
+.error-reasons {
+  text-align: left;
+  margin: 0 0 24px 0;
+  padding-left: 20px;
+  color: var(--tej-text-secondary);
+}
+
+.error-reasons li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.placeholder-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  padding: 20px;
+}
+
+.placeholder-content {
+  text-align: center;
+  max-width: 300px;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  color: var(--tej-text-secondary);
+  margin-bottom: 16px;
+}
+
+.placeholder-content h3 {
+  margin: 0 0 12px 0;
+  color: var(--tej-text-primary);
+  font-size: 1.2rem;
+}
+
+.placeholder-content p {
+  margin: 0;
+  color: var(--tej-text-secondary);
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .live-tv-content {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .features-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.tej-spinner p {
+  margin-top: 16px;
+  color: var(--tej-text-secondary);
+  font-size: 0.9rem;
+}
+
+ion-card-content p {
+  line-height: 1.6;
+  color: var(--tej-text-secondary);
+}
+
+.tej-live-badge {
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
+}
+
+.tej-video-container {
+  box-shadow: var(--tej-card-shadow);
+}
+
+.tej-video-container iframe {
+  border-radius: var(--tej-card-radius);
+}

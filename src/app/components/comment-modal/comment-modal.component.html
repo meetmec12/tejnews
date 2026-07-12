@@ -1,0 +1,65 @@
+<div class="comment-modal-backdrop" (click)="dismiss()">
+  <div class="comment-card" (click)="$event.stopPropagation()">
+    <div class="comment-header">
+      <h3>Add Comment</h3>
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </div>
+    
+    <form [formGroup]="commentForm" (ngSubmit)="submitComment()" class="comment-form">
+      <div class="form-group">
+        <label>Name *</label>
+        <input 
+          formControlName="author_name" 
+          type="text" 
+          placeholder="Your name"
+          [class.error]="commentForm.get('author_name')?.invalid && commentForm.get('author_name')?.touched">
+        <div class="error-message" *ngIf="commentForm.get('author_name')?.invalid && commentForm.get('author_name')?.touched">
+          Name is required (minimum 2 characters)
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Email *</label>
+        <input 
+          formControlName="author_email" 
+          type="email" 
+          placeholder="Your email"
+          [class.error]="commentForm.get('author_email')?.invalid && commentForm.get('author_email')?.touched">
+        <div class="error-message" *ngIf="commentForm.get('author_email')?.invalid && commentForm.get('author_email')?.touched">
+          Valid email is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Comment *</label>
+        <textarea 
+          formControlName="content" 
+          rows="4" 
+          placeholder="Write your comment..."
+          [class.error]="commentForm.get('content')?.invalid && commentForm.get('content')?.touched"></textarea>
+        <div class="error-message" *ngIf="commentForm.get('content')?.invalid && commentForm.get('content')?.touched">
+          Comment is required (minimum 10 characters)
+        </div>
+      </div>
+      
+      <div class="moderation-notice">
+        <ion-icon name="shield-checkmark-outline"></ion-icon>
+        <div>
+          <strong>Comments are moderated for safety.</strong>
+          <p>Your comment will not appear immediately and will be reviewed by a moderator before it is published.</p>
+          <p>Please do not share personal information such as phone numbers, addresses, or emails.</p>
+        </div>
+      </div>
+
+      <button 
+        type="submit"
+        class="submit-btn"
+        [disabled]="submittingComment">
+        <ion-spinner *ngIf="submittingComment" name="crescent"></ion-spinner>
+        <span *ngIf="!submittingComment">Post Comment</span>
+      </button>
+    </form>
+  </div>
+</div>

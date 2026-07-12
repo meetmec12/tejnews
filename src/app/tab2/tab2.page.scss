@@ -1,0 +1,142 @@
+.categories-content {
+  padding: 16px;
+}
+
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px 0;
+}
+
+.tej-category-chip {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tej-category-chip ion-badge {
+  background: var(--tej-text-secondary);
+  color: white;
+  font-size: 0.7rem;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+}
+
+.tej-category-chip.active ion-badge {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.section-header {
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.news-list {
+  padding-bottom: 20px;
+}
+
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px;
+  gap: 12px;
+}
+
+.news-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.news-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--tej-text-primary);
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--tej-text-secondary);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 300px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  color: var(--tej-text-secondary);
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  margin: 0 0 12px 0;
+  color: var(--tej-text-primary);
+  font-size: 1.2rem;
+}
+
+.empty-state p {
+  margin: 0 0 24px 0;
+  color: var(--tej-text-secondary);
+  max-width: 280px;
+}
+
+@media (max-width: 768px) {
+  .categories-content {
+    padding: 12px;
+  }
+  
+  .category-chips {
+    gap: 6px;
+  }
+  
+  .tej-category-chip {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+  
+  .news-item {
+    padding: 10px;
+  }
+  
+  .tej-news-thumb {
+    width: 70px;
+    height: 50px;
+  }
+  
+  .news-content h3 {
+    font-size: 0.9rem;
+  }
+}
+
+.tej-category-chip {
+  transform: scale(1);
+}
+
+.tej-category-chip:active {
+  transform: scale(0.95);
+}
+
+.tej-category-chip.active {
+  transform: scale(1.02);
+}

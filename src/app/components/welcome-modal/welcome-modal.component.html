@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Welcome to Tej News</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="welcome-content">
+    <h2>Welcome!</h2>
+    <p>Please provide your details to get started with personalized news updates.</p>
+    
+    <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="stacked">Full Name *</ion-label>
+        <ion-input 
+          formControlName="fullname" 
+          type="text" 
+          placeholder="Enter your full name">
+        </ion-input>
+      </ion-item>
+      <div class="error-message" *ngIf="welcomeForm.get('fullname')?.invalid && welcomeForm.get('fullname')?.touched">
+        <small>Full name is required (minimum 2 characters)</small>
+      </div>
+
+      <ion-item>
+        <ion-label position="stacked">Email *</ion-label>
+        <ion-input 
+          formControlName="email" 
+          type="email" 
+          placeholder="Enter your email">
+        </ion-input>
+      </ion-item>
+      <div class="error-message" *ngIf="welcomeForm.get('email')?.invalid && welcomeForm.get('email')?.touched">
+        <small>Please enter a valid email address</small>
+      </div>
+
+      <ion-item>
+        <ion-label position="stacked">Phone (Optional)</ion-label>
+        <ion-input 
+          formControlName="phone" 
+          type="tel" 
+          placeholder="Enter your phone number">
+        </ion-input>
+      </ion-item>
+
+      <ion-button 
+        expand="block" 
+        type="submit" 
+        color="danger"
+        [disabled]="!welcomeForm.valid"
+        class="submit-button">
+        Submit
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

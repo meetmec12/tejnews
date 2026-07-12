@@ -1,0 +1,54 @@
+<ion-header class="tej-header">
+  <ion-toolbar class="tej-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="settings-content">
+  <div class="settings-container">
+    <div class="settings-card">
+      <div class="card-header">
+        <ion-icon name="color-palette-outline" class="header-icon"></ion-icon>
+        <h2>Appearance</h2>
+      </div>
+      
+      <div class="setting-item">
+        <div class="setting-info">
+          <h3>Dark Mode</h3>
+          <p>Switch between light and dark theme</p>
+        </div>
+        <ion-toggle 
+          [checked]="isDarkMode$ | async" 
+          (ionChange)="onThemeToggle($event)"
+          color="danger">
+        </ion-toggle>
+      </div>
+      
+      <div class="setting-item">
+        <div class="setting-info">
+          <h3>Font Size</h3>
+          <p>Adjust text size for better readability</p>
+        </div>
+        <ion-select 
+          [value]="currentFontSize" 
+          (ionChange)="onFontSizeChange($event)"
+          interface="popover"
+          class="font-size-select"
+          placeholder="Select size">
+          <ion-select-option value="small">Small</ion-select-option>
+          <ion-select-option value="medium">Medium</ion-select-option>
+          <ion-select-option value="large">Large</ion-select-option>
+          <ion-select-option value="xlarge">Extra Large</ion-select-option>
+        </ion-select>
+      </div>
+      
+      <div class="info-card">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <p>Customize your reading experience with theme and font preferences.</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

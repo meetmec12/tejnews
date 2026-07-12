@@ -1,0 +1,81 @@
+<ion-header class="tej-header">
+  <ion-toolbar class="tej-toolbar">
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Loading Spinner -->
+  <div class="tej-spinner" *ngIf="loading">
+    <ion-spinner name="crescent" color="primary" style="--color: #FF0000 !important; color: #FF0000 !important;"></ion-spinner>
+  </div>
+
+  <!-- Categories Content -->
+  <div class="categories-content" *ngIf="!loading">
+    <!-- Category Chips -->
+    <div class="category-chips">
+      <button 
+        *ngFor="let category of categories" 
+        [class.active]="selectedCategory?.id === category.id"
+        class="nav-badge-btn"
+        (click)="selectCategory(category)">
+        {{ category.name }} <small>({{ category.count }})</small>
+      </button>
+    </div>
+
+    <!-- Selected Category Posts -->
+    <div class="category-posts" *ngIf="selectedCategory">
+      <div class="section-header">
+        <h2 class="tej-text-brand">{{ selectedCategory.name }}</h2>
+      </div>
+
+      <!-- Posts Loading -->
+      <div class="tej-spinner" *ngIf="loadingPosts">
+        <ion-spinner name="crescent" color="primary" style="--color: #FF0000 !important; color: #FF0000 !important;"></ion-spinner>
+      </div>
+
+      <!-- Posts List -->
+      <div class="news-list" *ngIf="!loadingPosts">
+        <ion-card class="tej-news-card" *ngFor="let post of categoryPosts" (click)="openNewsDetail(post)">
+          <div class="news-item">
+            <img [src]="getImageUrl(post)" [alt]="post.title.rendered" class="tej-news-thumb">
+            <div class="news-content">
+              <h3>{{ post.title.rendered }}</h3>
+              <div class="news-meta">
+                <span class="time">
+                  <ion-icon name="time-outline"></ion-icon>
+                  {{ getTimeAgo(post.date) }}
+                </span>
+                <span class="author" *ngIf="post._embedded?.author?.[0]?.name">
+                  • {{ post._embedded?.author?.[0]?.name }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+      </div>
+
+      <!-- Empty Category State -->
+      <div class="empty-state" *ngIf="!loadingPosts && categoryPosts.length === 0">
+        <ion-icon name="folder-open-outline" class="empty-icon"></ion-icon>
+        <h3>No Posts in {{ selectedCategory.name }}</h3>
+        <p>This category doesn't have any posts yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty Categories State -->
+  <div class="empty-state" *ngIf="!loading && categories.length === 0">
+    <ion-icon name="grid-outline" class="empty-icon"></ion-icon>
+    <h3>No Categories Available</h3>
+    <p>Please check your internet connection and try again.</p>
+    <ion-button class="tej-button" (click)="loadCategories()">
+      <ion-icon name="refresh" slot="start"></ion-icon>
+      Retry
+    </ion-button>
+  </div>
+</ion-content>
