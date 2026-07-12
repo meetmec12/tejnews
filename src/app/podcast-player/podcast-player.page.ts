@@ -61,7 +61,7 @@ export class PodcastPlayerPage implements OnInit {
       if (embedMatch && embedMatch[1]) {
         const videoId = embedMatch[1];
         this.youtubeEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-          `https://www.youtube.com/embed/${videoId}`
+          `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0&enablejsapi=1`
         );
         console.log('YouTube video found in iframe:', videoId);
         return;
@@ -86,7 +86,7 @@ export class PodcastPlayerPage implements OnInit {
       if (match && match[1]) {
         const videoId = match[1];
         this.youtubeEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-          `https://www.youtube.com/embed/${videoId}`
+          `https://www.youtube.com/embed/${videoId}?playsinline=1&rel=0&enablejsapi=1`
         );
         console.log('YouTube video found:', videoId);
         return;
