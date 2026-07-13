@@ -44,12 +44,7 @@ export class NewsService {
           this.cache.set(cacheKey, decodedPosts);
           return decodedPosts;
         }),
-        catchError((error) => {
-          const msg = `STATUS: ${error.status} | MSG: ${error.message} | URL: ${error.url} | ORIGIN: ${window.location.origin}`;
-          alert('DEBUG ERROR: ' + msg);
-          console.error('getPosts error:', msg);
-          return of([]);
-        })
+        catchError(() => of([]))
       );
   }
 
