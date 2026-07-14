@@ -28,15 +28,10 @@ export class NotificationService {
       await OneSignal.Notifications.requestPermission(true);
 
       OneSignal.Notifications.addEventListener('click', (event: any) => {
-        const postId = event.notification.additionalData?.postId;
+        const postId = event.notification?.additionalData?.postId;
         if (postId) {
-          this.router.navigate(['/news-detail', postId]);
+          this.router.navigate(['/news', postId]);
         }
-      });
-
-      OneSignal.Notifications.addEventListener('foregroundWillDisplay', (event: any) => {
-        event.preventDefault();
-        event.notification.display();
       });
 
     } catch (error) {
