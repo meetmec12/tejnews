@@ -44,10 +44,7 @@ export class NewsService {
           this.cache.set(cacheKey, decodedPosts);
           return decodedPosts;
         }),
-        catchError((error) => {
-          alert('POSTS ERROR: ' + error.status + ' | ' + error.message);
-          return of([]);
-        })
+        catchError(() => of([]))
       );
   }
 
