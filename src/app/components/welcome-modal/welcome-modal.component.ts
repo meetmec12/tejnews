@@ -66,6 +66,7 @@ export class WelcomeModalComponent {
   }
 
   async dismiss() {
+    this.welcomeService.markWelcomeAsShown();
     await this.modalController.dismiss();
   }
 }

@@ -55,7 +55,10 @@ export class AppComponent {
       setTimeout(async () => {
         const modal = await this.modalController.create({
           component: WelcomeModalComponent,
-          backdropDismiss: false
+          backdropDismiss: true
+        });
+        modal.onDidDismiss().then(() => {
+          this.welcomeService.markWelcomeAsShown();
         });
         await modal.present();
       }, 1000);
